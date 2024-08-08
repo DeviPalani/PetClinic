@@ -29,6 +29,9 @@ jobs:
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'  # Change conditions as needed
       run: terraform apply -auto-approve tfplan
       
+    - name: Terraform Validate
+      run: terraform validate   
+      
     - name: Terraform Destroy
       if: github.event_name == 'pull_request'  # Adjust conditions as needed
       run: terraform destroy -auto-approve
